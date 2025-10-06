@@ -10,7 +10,7 @@ import Pagination from '@/components/Pagination/Pagination';
 import Modal from '@/components/Modal/Modal';
 import NoteForm from '@/components/NoteForm/NoteForm';
 import { useDebounce } from '@/app/hooks/useDebounce';
-import css from './NotesPage.module.css';
+import css from '../../NotesPage.module.css';
 import type { FetchNotesResponse } from '@/lib/api';
 
 const NOTES_PER_PAGE = 12;
@@ -31,7 +31,7 @@ export default function NotesClient({ initialTag }: NotesClientProps) {
     page: currentPage,
     perPage: NOTES_PER_PAGE,
     search: debouncedSearchTerm || undefined,
-    tag: initialTag as NoteTag || undefined,
+    tag: initialTag,
   };
 
   const {
@@ -82,6 +82,7 @@ export default function NotesClient({ initialTag }: NotesClientProps) {
 
   const hasNotes = notesData && notesData.notes && notesData.notes.length > 0;
   const totalPages = notesData?.totalPages || 0;
+  const currentTag = initialTag || 'All';
 
   return (
     <div className={css.app}>
