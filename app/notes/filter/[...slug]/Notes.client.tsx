@@ -10,7 +10,7 @@ import Pagination from '@/components/Pagination/Pagination';
 import Modal from '@/components/Modal/Modal';
 import NoteForm from '@/components/NoteForm/NoteForm';
 import { useDebounce } from '@/app/hooks/useDebounce';
-import css from '../../NotesPage.module.css';
+import css from './NotesPage.module.css';
 import type { FetchNotesResponse } from '@/lib/api';
 
 const NOTES_PER_PAGE = 12;
