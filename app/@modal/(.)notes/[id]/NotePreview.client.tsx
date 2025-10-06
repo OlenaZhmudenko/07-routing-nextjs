@@ -23,8 +23,63 @@ export default function NotePreviewClient({ noteId }: NotePreviewClientProps) {
     router.back();
   };
 
-  if (isLoading) return null;
-  if (error || !note) return null;
+  if (isLoading) {
+    return (
+        <Modal isOpen={true} onClose={handleClose}>
+        <div className={css.container}>
+          <button className={css.backBtn} onClick={handleClose}>
+            ← Back
+          </button>
+          <div className={css.item}>
+            <div className={css.header}>
+              <h2>Loading...</h2>
+            </div>
+            <p className={css.content}>Please wait while we load your note.</p>
+          </div>
+        </div>
+      </Modal>
+    );
+  }
+  
+  if (error) {
+     return (
+      <Modal isOpen={true} onClose={handleClose}>
+        <div className={css.container}>
+          <button className={css.backBtn} onClick={handleClose}>
+            ← Back
+          </button>
+          <div className={css.item}>
+            <div className={css.header}>
+              <h2>Error</h2>
+            </div>
+            <p className={css.content}>
+              Sorry, we couldn't load the note. Please try again later.
+            </p>
+          </div>
+        </div>
+      </Modal>
+    );
+  } 
+
+  if (!note) {
+    return (
+      <Modal isOpen={true} onClose={handleClose}>
+        <div className={css.container}>
+          <button className={css.backBtn} onClick={handleClose}>
+            ← Back
+          </button>
+          <div className={css.item}>
+            <div className={css.header}>
+              <h2>Note Not Found</h2>
+            </div>
+            <p className={css.content}>
+              The note you're looking for doesn't exist or may have been deleted.
+            </p>
+          </div>
+        </div>
+      </Modal>
+    );
+  }
 
   return (
     <Modal isOpen={true} onClose={handleClose}>
