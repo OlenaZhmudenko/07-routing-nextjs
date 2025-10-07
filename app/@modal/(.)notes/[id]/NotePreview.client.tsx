@@ -53,7 +53,7 @@ export default function NotePreviewClient({ noteId }: NotePreviewClientProps) {
               <h2>Error</h2>
             </div>
             <p className={css.content}>
-              Sorry, we couldn't load the note. Please try again later.
+              Sorry, we can not load the note. Please try again later.
             </p>
           </div>
         </div>
@@ -73,7 +73,7 @@ export default function NotePreviewClient({ noteId }: NotePreviewClientProps) {
               <h2>Note Not Found</h2>
             </div>
             <p className={css.content}>
-              The note you're looking for doesn't exist or may have been deleted.
+              The note you are looking for does not exist or may have been deleted.
             </p>
           </div>
         </div>
